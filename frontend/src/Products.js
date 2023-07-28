@@ -16,7 +16,7 @@ const Products = [
   {
     _id: 2,
     name: 'Hawiian Shirt',
-    image: '../src/assets/images/orioleshawaiianshirt.png',
+    image: '../src/assets/images/orioleshawaii.png',
     description: 'The coolest shirt in the game',
     brand: 'Bird Brand',
     category: 'Apparel',
@@ -72,7 +72,32 @@ const Products = [
     countInStock: 10,
     rating: 4.5,
     numReviews: 12
-  }
+  },
+  {
+    _id: 7,
+    name: 'Old School Bird t-shirt',
+    image: '../src/assets/images/60sbirdshirt.jpeg',
+    description: 'Dinger Bird t-shirt',
+    brand: 'Nike',
+    category: 'Apparel',
+    price: 20.99,
+    countInStock: 10,
+    rating: 4.5,
+    numReviews: 12
+  },
+  {
+    _id: 8,
+    name: 'Homer Hose t-shirt',
+    image: '../src/assets/images/homerhose.png',
+    description: 'Orioles jersey',
+    brand: 'Nike',
+    category: 'Apparel',
+    price: 129.99,
+    countInStock: 10,
+    rating: 4.5,
+    numReviews: 12
+  },
+
 ]
 
 export default Products

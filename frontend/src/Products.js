@@ -1,6 +1,6 @@
 
 
-const Products = [
+const products = [
   {
     _id: 1,
     name: 'City Connect Jersey',
@@ -100,4 +100,4 @@ const Products = [
 
 ]
 
-export default Products
+export default products

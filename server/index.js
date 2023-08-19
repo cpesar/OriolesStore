@@ -7,11 +7,11 @@ dotenv.config()
 const PORT = process.env.PORT || 8000
 const app = express();
 
-app.get('/api/products', (req, res) => {
+app.get('/products', (req, res) => {
     res.json(productsData)
 })
 
-app.get('/api/products/:id', (req, res) => {
+app.get('/products/:id', (req, res) => {
     const product = productsData.find((p) => p._id === req.params.id)
     res.json(product)
 })

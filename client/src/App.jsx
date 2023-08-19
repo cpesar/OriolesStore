@@ -11,8 +11,9 @@ const App = () => {
       <Header />
       <main className="py-3">
         <Container>
-          <Outlet />
-          <HomeScreen />
+          <Outlet>
+            <HomeScreen />
+          </Outlet>
         </Container>
       </main>
 

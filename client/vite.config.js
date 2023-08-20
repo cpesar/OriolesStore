@@ -10,11 +10,15 @@ export default defineConfig({
   //     input: './src/main.jsx'
   //   }
   // },
+  plugins: [react()],
 
   server: {
     proxy: {
-      "/api/products": "http://localhost:5000"
+      "/api/products": {
+        target: "http://localhost:8000",
+        changeOrigin: true,
+        secure: false
+      }
     }
-  },
-  plugins: [react()]
+  }
 })

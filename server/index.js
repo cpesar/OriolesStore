@@ -1,17 +1,22 @@
 
 import express from 'express';
-import productsData from './data/Products.js';
+import productsData from './data/Products.js'
 import dotenv from 'dotenv';
 dotenv.config()
 
-const PORT = process.env.PORT || 8000
+const PORT = process.env.PORT || 5000
 const app = express();
 
-app.get('/products', (req, res) => {
+
+app.get('/', (req, res) => {
+    res.send('Api is running...')
+})
+
+app.get('/api/products', (req, res) => {
     res.json(productsData)
 })
 
-app.get('/products/:id', (req, res) => {
+app.get('/api/products/:id', (req, res) => {
     const product = productsData.find((p) => p._id === req.params.id)
     res.json(product)
 })

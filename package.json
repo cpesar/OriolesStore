@@ -1,12 +1,11 @@
 {
   "type": "module",
-  "dependencies": {
-    "concurrently": "^7.0.0"
-  },
   "scripts": {
     "start": "concurrently \"cd ./server && npm run server\" \"cd ./client && npm run dev\""
   },
   "devDependencies": {
-    "dotenv": "^16.3.1"
+    "concurrently": "^8.2.0",
+    "dotenv": "^16.3.1",
+    "nodemon": "^3.0.1"
   }
 }

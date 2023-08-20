@@ -1,18 +1,18 @@
-import mongoose from "mongoose";
+// import mongoose from "mongoose";
 import dotenv from "dotenv";
 import colors from "colors";
-import users from "./data/users";
-import productsData from "./data/Products";
-import User from "./models/userModel";
-import Product from "./models/Product";
-import Order from "./models/orderModel";
-import connectDB from "./config/db";
+import users from '../server/data/users.js'
+import productsData from '../server/data/Products.js'
+import User from '../server/models/userModel.js'
+import Product from '../server/models/productModel.js'
+import Order from '../server/models/orderModel.js'
+import connectDB from '../server/config/db.js'
 
 
 dotenv.config()
 connectDB()
 
-const importData = async () => {
+export const importData = async () => {
     try {
         await Order.deleteMany();
         await Product.deleteMany();
@@ -36,13 +36,13 @@ const importData = async () => {
     }
 }
 
-const destroyData = async () => {
+export const destroyData = async () => {
     try {
         await Order.deleteMany();
         await Product.deleteMany();
         await User.deleteMany();
 
-        console.log('Data destroyed'.green.inverse)
+        console.log('Data destroyed'.red.inverse)
         process.exit()
     } catch (error) {
         console.error(`${error}`.red.inverse)
@@ -50,7 +50,7 @@ const destroyData = async () => {
     }
 }
 
-if (process.argv[2] === 'd') {
+if (process.argv[2] === '-d') {
     destroyData()
 } else {
     importData()

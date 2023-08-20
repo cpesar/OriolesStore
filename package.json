@@ -1,7 +1,9 @@
 {
   "type": "module",
   "scripts": {
-    "start": "concurrently \"cd ./server && npm run server\" \"cd ./client && npm run dev\""
+    "start": "concurrently \"cd ./server && npm run server\" \"cd ./client && npm run dev\"",
+     "data:import": "node server/seeder.js",
+    "data:destroy": "node server/seeder.js -d"
   },
   "devDependencies": {
     "concurrently": "^8.2.0",

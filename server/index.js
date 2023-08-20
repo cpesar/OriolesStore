@@ -1,8 +1,8 @@
 
 import express from 'express';
-import productsData from './data/Products.js'
 import dotenv from 'dotenv';
 dotenv.config()
+import productRoutes from '../server/routes/productRoutes.js'
 import connectDB from './config/db.js'
 
 connectDB() //connect to mongoDB
@@ -14,13 +14,7 @@ app.get('/', (req, res) => {
     res.send('Api is running...')
 })
 
-app.get('/api/products', (req, res) => {
-    res.json(productsData)
-})
+app.use('/api/products', productRoutes)
 
-app.get('/api/products/:id', (req, res) => {
-    const product = productsData.find((p) => p._id === req.params.id)
-    res.json(product)
-})
 
 app.listen(PORT, () => console.log(`Server is listening on port : ${PORT}`))

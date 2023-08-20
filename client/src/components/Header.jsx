@@ -14,17 +14,23 @@ const Header = () => {
             <Navbar.Brand>
               <img src={birdlogo} alt="birdlogo" width="30" height="30" className="d-inline-block align-top" />
               {' '}
-              BirdShop
+              BirdHouse
             </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
             <Nav className="ms-auto">
               <LinkContainer to="/cart">
-                <Nav.Link><FaShoppingCart /> Cart</Nav.Link>
+                <Nav.Link>
+                  <FaShoppingCart />
+                  Cart
+                </Nav.Link>
               </LinkContainer>
               <LinkContainer to="/login">
-                <Nav.Link><FaUser /> Sign In</Nav.Link>
+                <Nav.Link>
+                  <FaUser />
+                  Sign In
+                </Nav.Link>
               </LinkContainer>
             </Nav>
           </Navbar.Collapse>

@@ -18,6 +18,7 @@ const HomeScreen = () => {
 
   return (
     <>
+      {/* <h1>The BirdHouse</h1> */}
       <h3>Carefully curated Baltimore Orioles Products</h3>
       <Row>
         {products.map((product) => (

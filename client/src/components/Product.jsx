@@ -8,11 +8,11 @@ const Product = ({ product }) => {
     <>
       <Stack>
         <Card className="my-3 p-3 rounded" style={{ height: '100%' }}>
-          <Link to={`/product/${product._id}`}>
+          <Link to={`/products/${product._id}`}>
             <Card.Img src={product.image} width="50" height="250" variant="top" />
           </Link>
           <Card.Body>
-            <Link to={`/product/${product._id}`}>
+            <Link to={`/products/${product._id}`}>
               <Card.Title as="div" className='product-title'>
                 <strong>{product.name}</strong>
               </Card.Title>

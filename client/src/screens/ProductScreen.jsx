@@ -8,8 +8,11 @@ import axios from 'axios'
 
 
 const ProductScreen = () => {
-  const [product, setProduct] = useState([])
+  const [product, setProduct] = useState({})
   const { id: productId } = useParams()
+  // console.log(productId)
+
+  // const { id } = useParams()
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -18,6 +21,19 @@ const ProductScreen = () => {
     }
     fetchProduct()
   }, [productId])
+
+  // useEffect(() => {
+  //   if (id) {
+  //     axios.get(`/api/products/${id}`)
+  //       .then(res => {
+  //         console.log(res)
+  //         setProduct(data)
+  //       })
+  //       .catch(err => {
+  //         console.log(err)
+  //       })
+  //   }
+  // }, [id])
 
 
 

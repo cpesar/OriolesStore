@@ -1,6 +1,28 @@
 
 const productsData = [
   {
+    name: "Santa's Gift - Baltimore Orioles",
+    image: '../src/assets/images/santasgift.png',
+    description: 'Pretty Neat!',
+    brand: 'CharmCity',
+    category: 'Collectible/Memorabilia',
+    price: 29.99,
+    countInStock: 3,
+    rating: 4.3,
+    numReviews: 12
+  },
+  {
+    name: "The Oriole Bird Baltimore Orioles #1 Dad Mascot Bobblehead",
+    image: '../src/assets/images/birddad.png',
+    description: 'Pretty Neat!',
+    brand: 'CharmCity',
+    category: 'Collectibles/Memorabilia',
+    price: 49.99,
+    countInStock: 0,
+    rating: 5.0,
+    numReviews: 12
+  },
+  {
     name: 'City Connect Jersey',
     image: '../src/assets/images/cityconnectjersey.png',
     description: 'Austin Hays game-worn City Connect jersey',

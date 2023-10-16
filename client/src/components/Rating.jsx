@@ -1,8 +1,16 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import '../assets/styles/index.css'
 import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa'
 
 const Rating = ({ value, text }) => {
+
+  Rating.propTypes = {
+    value: PropTypes.number,
+    text: PropTypes.string,
+  }
+
+
   return (
     <div className='rating'>Rating
       <span>

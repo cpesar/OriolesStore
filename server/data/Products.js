@@ -110,6 +110,28 @@ const productsData = [
     rating: 4.0,
     numReviews: 12
   },
+  {
+    name: "Brooks Robinson Baltimore Orioles Autographed Picture",
+    image: '../src/assets/images/brooks.png',
+    description: 'Brooks Robinson signed baseball',
+    brand: 'CharmCity',
+    category: 'Memorabilia',
+    price: 650.00,
+    countInStock: 1,
+    rating: 5.0,
+    numReviews: 24
+  },
+  {
+    name: "Brooksie Bobblehead",
+    image: '../src/assets/images/brookshead.png',
+    description: 'Brooks Robinson bobblehead',
+    brand: 'CharmCity',
+    category: 'Memorabilia',
+    price: 69.99,
+    countInStock: 2,
+    rating: 5.0,
+    numReviews: 32
+  }
 
 ]
 

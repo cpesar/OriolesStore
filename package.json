@@ -2,7 +2,7 @@
   "type": "module",
   "scripts": {
     "start": "concurrently \"cd ./server && npm run server\" \"cd ./client && npm run dev\"",
-     "data:import": "node server/seeder.js",
+    "data:import": "node server/seeder.js",
     "data:destroy": "node server/seeder.js -d"
   },
   "devDependencies": {

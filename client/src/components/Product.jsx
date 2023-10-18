@@ -1,15 +1,10 @@
 /* eslint-disable react/prop-types */
 import React from 'react'
-import PropTypes from 'prop-types'
 import { Card, Stack } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import Rating from './Rating'
 
 const Product = ({ product }) => {
-
-  Product.propTypes = {
-    product: PropTypes.object,
-  }
 
   return (
     <>

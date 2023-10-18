@@ -6,12 +6,23 @@ import Rating from '../components/Rating'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
 import { useGetProductDetailsQuery } from '../slices/productsApiSlice.js'
+import { addToCart } from '../slices/cartSlice'
 
 
 const ProductScreen = () => {
-  const [qty, setQty] = useState(1)
   const { id: productId } = useParams()
-  const { data: product, isLoading, error } = useGetProductDetailsQuery(productId);
+
+
+  const [qty, setQty] = useState(1)
+
+
+  const { data: product, isLoading, refetch, error } = useGetProductDetailsQuery(productId);
+
+  // if (!product) {
+  //   refetch()
+  //   console.log(product)
+  // }
+  console.log(product?.data)
 
 
 
@@ -38,21 +49,21 @@ const ProductScreen = () => {
         ) : (
           <Row>
             <Col md={5}>
-              <Image src={product.image} alt={product.name} fluid />
+              <Image src={product?.image} alt={product?.name} fluid />
             </Col>
             <Col md={4}>
               <ListGroup variant='flush'>
                 <ListGroup.Item>
-                  <h3>{product.name}</h3>
+                  <h3>{product?.name}</h3>
                 </ListGroup.Item>
                 <ListGroup.Item>
-                  <Rating value={product.rating} text={`${product.numReviews} reviews`} />
+                  <Rating value={product?.rating} text={`${product?.numReviews} reviews`} />
                 </ListGroup.Item>
                 <ListGroup.Item>
-                  Price: ${product.price}
+                  Price: ${product?.price}
                 </ListGroup.Item>
                 <ListGroup.Item>
-                  Description: {product.description}
+                  Description: {product?.description}
                 </ListGroup.Item>
               </ListGroup>
             </Col>
@@ -65,7 +76,7 @@ const ProductScreen = () => {
                         Price:
                       </Col>
                       <Col>
-                        <strong>${product.price}</strong>
+                        <strong>${product?.price}</strong>
                       </Col>
                     </Row>
                   </ListGroup.Item>
@@ -76,11 +87,11 @@ const ProductScreen = () => {
                         Status:
                       </Col>
                       <Col>
-                        <strong>{product.countInStock > 0 ? 'In stock' : 'Out stock'}</strong>
+                        <strong>{product?.countInStock > 0 ? 'In stock' : 'Out stock'}</strong>
                       </Col>
                     </Row>
                   </ListGroup.Item>
-                  {product.countInStock > 0 && (
+                  {product?.countInStock > 0 && (
                     <ListGroup.Item>
                       <Row>
                         <Col>Qty</Col>
@@ -90,7 +101,7 @@ const ProductScreen = () => {
                             value={qty}
                             onChange={(e) => setQty(Number(e.target.value))}
                           >
-                            {[...Array(product.countInStock).keys()]
+                            {[...Array(product?.countInStock).keys()]
                               .map((p) =>
                               (<option key={p + 1} value={p + 1}>{p + 1}
                                 {p + 1}
@@ -102,7 +113,7 @@ const ProductScreen = () => {
                     </ListGroup.Item>
                   )}
                   <ListGroup.Item>
-                    <Button className='btn-block' type='button' disabled={product.countInStock === 0}>
+                    <Button className='btn-block' type='button' disabled={product?.countInStock === 0}>
                       Add to cart
                     </Button>
                   </ListGroup.Item>

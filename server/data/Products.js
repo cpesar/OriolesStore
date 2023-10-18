@@ -131,6 +131,50 @@ const productsData = [
     countInStock: 2,
     rating: 5.0,
     numReviews: 32
+  },
+  {
+    name: "Sidney Poson Barbank Sportscards",
+    image: '../src/assets/images/sidneycard.png',
+    description: 'Sidney Ponson baseball card',
+    brand: 'Barbank Sportscards',
+    category: 'Baseball Cards',
+    price: 0.99,
+    countInStock: 100,
+    rating: -0.5,
+    numReviews: 200
+  },
+  {
+    name: "Sidney Poson Barbank Sportscards",
+    image: '../src/assets/images/sidney2.png',
+    description: 'Sidney Ponson baseball card',
+    brand: 'Barbank Sportscards',
+    category: 'Baseball Cards',
+    price: 0.99,
+    countInStock: 100,
+    rating: -0.5,
+    numReviews: 200
+  },
+  {
+    name: "Jay Gibbons",
+    image: '../src/assets/images/jaygib1.png',
+    description: 'Sidney Ponson baseball card',
+    brand: 'Barbank Sportscards',
+    category: 'Baseball Cards',
+    price: 0.99,
+    countInStock: 100,
+    rating: -0.5,
+    numReviews: 200
+  },
+  {
+    name: "Jay Gibbons",
+    image: '../src/assets/images/jaygib2.png',
+    description: 'Sidney Ponson baseball card',
+    brand: 'Barbank Sportscards',
+    category: 'Baseball Cards',
+    price: 0.99,
+    countInStock: 100,
+    rating: -0.5,
+    numReviews: 200
   }
 
 ]

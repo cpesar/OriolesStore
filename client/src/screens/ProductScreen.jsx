@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Row, Col, Image, ListGroup, Card, Button, Form } from 'react-bootstrap'
 import Rating from '../components/Rating'
@@ -11,27 +12,16 @@ import { addToCart } from '../slices/cartSlice'
 
 const ProductScreen = () => {
   const { id: productId } = useParams()
-
-
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
   const [qty, setQty] = useState(1)
-
 
   const { data: product, isLoading, refetch, error } = useGetProductDetailsQuery(productId);
 
-  // if (!product) {
-  //   refetch()
-  //   console.log(product)
-  // }
-  console.log(product?.data)
-
-
-
-  // console.log([...Array(product.countInStock).keys()])
-  // console.log(product.countInStock)
-  // console.log(product.name)
-  // console.log(product.description)
-
-
+  const addToCartHandler = () => {
+    dispatch(addToCart({ ...product, qty }))
+    navigate('/cart')
+  }
 
   return (
     <>
@@ -45,25 +35,25 @@ const ProductScreen = () => {
         <Loader />
       )
         : error ? (
-          <Message variant='danger'>{error?.data?.message || error.message}</Message>
+          <Message variant='danger'>{error.data.message || error.message}</Message>
         ) : (
           <Row>
             <Col md={5}>
-              <Image src={product?.image} alt={product?.name} fluid />
+              <Image src={product.image} alt={product.name} fluid />
             </Col>
             <Col md={4}>
               <ListGroup variant='flush'>
                 <ListGroup.Item>
-                  <h3>{product?.name}</h3>
+                  <h3>{product.name}</h3>
                 </ListGroup.Item>
                 <ListGroup.Item>
-                  <Rating value={product?.rating} text={`${product?.numReviews} reviews`} />
+                  <Rating value={product.rating} text={`${product.numReviews} reviews`} />
                 </ListGroup.Item>
                 <ListGroup.Item>
-                  Price: ${product?.price}
+                  Price: ${product.price}
                 </ListGroup.Item>
                 <ListGroup.Item>
-                  Description: {product?.description}
+                  Description: {product.description}
                 </ListGroup.Item>
               </ListGroup>
             </Col>
@@ -76,7 +66,7 @@ const ProductScreen = () => {
                         Price:
                       </Col>
                       <Col>
-                        <strong>${product?.price}</strong>
+                        <strong>${product.price}</strong>
                       </Col>
                     </Row>
                   </ListGroup.Item>
@@ -87,11 +77,11 @@ const ProductScreen = () => {
                         Status:
                       </Col>
                       <Col>
-                        <strong>{product?.countInStock > 0 ? 'In stock' : 'Out stock'}</strong>
+                        {product.countInStock > 0 ? 'In stock' : 'Out stock'}
                       </Col>
                     </Row>
                   </ListGroup.Item>
-                  {product?.countInStock > 0 && (
+                  {product.countInStock > 0 && (
                     <ListGroup.Item>
                       <Row>
                         <Col>Qty</Col>
@@ -101,9 +91,9 @@ const ProductScreen = () => {
                             value={qty}
                             onChange={(e) => setQty(Number(e.target.value))}
                           >
-                            {[...Array(product?.countInStock).keys()]
+                            {[...Array(product.countInStock).keys()]
                               .map((p) =>
-                              (<option key={p + 1} value={p + 1}>{p + 1}
+                              (<option key={p + 1} value={p + 1}>
                                 {p + 1}
                               </option>))
                             }
@@ -113,7 +103,12 @@ const ProductScreen = () => {
                     </ListGroup.Item>
                   )}
                   <ListGroup.Item>
-                    <Button className='btn-block' type='button' disabled={product?.countInStock === 0}>
+                    <Button
+                      className='btn-block'
+                      type='button'
+                      disabled={product.countInStock === 0}
+                      onClick={addToCartHandler}
+                    >
                       Add to cart
                     </Button>
                   </ListGroup.Item>

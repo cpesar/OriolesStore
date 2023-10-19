@@ -1,11 +1,14 @@
 import React from 'react'
 import { Navbar, Nav, Container } from 'react-bootstrap'
+import { useSelector } from 'react-redux'
 import { LinkContainer } from 'react-router-bootstrap'
 import { FaShoppingCart, FaUser } from 'react-icons/fa'
 import birdlogo from '../assets/images/birdlogo.png'
 
 
 const Header = () => {
+  const { cartItems } = useSelector((state) => state)
+  console.log(cartItems)
   return (
     <header>
       <Navbar bg="dark" variant="dark" expand="md" collapseOnSelect>

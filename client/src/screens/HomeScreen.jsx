@@ -21,13 +21,15 @@ const HomeScreen = () => {
   //   fetchProducts()
   // }, [])
 
+  // console.log(products)
+
 
   return (
     <Fragment>
       {isLoading ? (
         <Loader />
       ) : error ? (
-        <Message variant='danger'>{error?.data?.message || error.message}</Message>
+        <Message variant='danger'>{error.data.message || error.message}</Message>
       ) : (
         <Fragment>
           <h3>Carefully curated Baltimore Orioles Products</h3>

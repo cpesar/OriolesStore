@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { apiSlice } from './apiSlice.js';
 import { ORDERS_URL } from '../constants.js'
+import { updateCart } from '../utils/cartUtils.jsx';
 
 const initialState = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : { cartItems: [] }
 
@@ -10,33 +11,24 @@ const addDecimals = (num) => {
 
 const cartSlice = createSlice({
     name: 'cart',
-    initialState: initialState,
+    initialState,
     reducers: {
         addToCart: (state, action) => {
-            const item = action.payload;
+            // This is undefined
+            const items = action.payload;
+            // const { user, rating, numReviews, ...item } = action.payload
 
-            const hasItem = state.cartItems.find((c) => c._id === item._id)
+            const hasItem = state.cartItems.find((h) => h._id === items._id)
 
             if (hasItem) {
-                state.cartItems = state.cartItems.map((c) => c._id === item._id ? item : c)
+                state.cartItems = state.cartItems.map((c) => c._id === hasItem._id ? items : c)
             } else {
-                state.cartItems = [...state.cartItems, item]
+                state.cartItems = [...state.cartItems, items]
             }
 
-            //Calculate item price
-            state.itemsPirce = addDecimals(state.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0))
-            //Calculate shipping price (if order is > $100, free shipping. Else, $10 shipping)
-            state.shippingPrice = addDecimals(state.itemsPirce > 100 ? 0 : 10)
-            //Calculate tax price (15% of total price)
-            state.taxPrice = addDecimals(Number(0.15 * state.itemsPirce).toFixed(2))
-            //Calculate total price
-            state.totalPrice = (
-                Number(state.itemsPirce) +
-                Number(state.shippingPrice) +
-                Number(state.taxPrice)
-            ).toFixed(2)
 
-            localStorage.setItem('cart', JSON.stringify(state))
+            return updateCart(state)
+
         },
     },
 })

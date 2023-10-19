@@ -9,7 +9,8 @@ import { Fragment } from 'react';
 
 
 const HomeScreen = () => {
-  const { data: products, isLoading, error } = useGetProductsQuery();
+  const { data: product, isLoading, error } = useGetProductsQuery();
+  // console.log(data.products)
 
   // const [products, setProducts] = useState([])
 
@@ -29,14 +30,14 @@ const HomeScreen = () => {
       {isLoading ? (
         <Loader />
       ) : error ? (
-        <Message variant='danger'>{error.data.message || error.message}</Message>
+        <Message variant='danger'>{error?.data?.message || error.message}</Message>
       ) : (
         <Fragment>
           <h3>Carefully curated Baltimore Orioles Products</h3>
           <Row>
-            {products.map((product) => (
-              <Col key={product._id} sm={12} md={6} lg={4} xl={3} >
-                <Product product={product} />
+            {product.map((p) => (
+              <Col key={p._id} sm={12} md={6} lg={4} xl={3} >
+                <Product product={p} />
               </Col>
             ))}
           </Row>

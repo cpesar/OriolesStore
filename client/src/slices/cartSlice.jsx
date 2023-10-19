@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { apiSlice } from './apiSlice.js';
-import { ORDERS_URL } from '../constants.js'
+// import { apiSlice } from './apiSlice.js';
+// import { ORDERS_URL } from '../constants.js'
 import { updateCart } from '../utils/cartUtils.jsx';
 
 const initialState = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : { cartItems: [] }
+// console.log(initialState)
 
 const addDecimals = (num) => {
     return (Math.round(num * 100) / 100).toFixed(2)
@@ -14,26 +15,20 @@ const cartSlice = createSlice({
     initialState,
     reducers: {
         addToCart: (state, action) => {
-            // This is undefined
-            const items = action.payload;
-            // const { user, rating, numReviews, ...item } = action.payload
+            const item = action.payload;
+            console.log(item)
 
-            const hasItem = state.cartItems.find((h) => h._id === items._id)
+            const hasItem = state.cartItems.find((h) => h._id === item._id)
 
             if (hasItem) {
-                state.cartItems = state.cartItems.map((c) => c._id === hasItem._id ? items : c)
+                state.cartItems = state.cartItems.map((c) => c._id === hasItem._id ? item : c)
             } else {
-                state.cartItems = [...state.cartItems, items]
+                state.cartItems = [...state.cartItems, item]
             }
-
-
-            return updateCart(state)
-
+            updateCart(state)
         },
     },
 })
-
-
 
 
 export const { addToCart } = cartSlice.actions

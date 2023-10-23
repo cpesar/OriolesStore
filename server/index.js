@@ -7,7 +7,7 @@ import connectDB from './config/db.js'
 import { notFound, errorHandler } from '../server/middleware/errorMiddleware.js'
 
 connectDB() //connect to mongoDB
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 8000
 const app = express();
 
 

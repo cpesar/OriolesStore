@@ -18,7 +18,7 @@ import ProductScreen from './screens/ProductScreen.jsx'
 const Router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
-      <Route index={true} path='/products' element={<HomeScreen />} />
+      <Route index={true} path="/" element={<HomeScreen />} />
       <Route path="/products/:id" element={<ProductScreen />} />
     </Route>,
   ),

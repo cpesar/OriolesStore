@@ -1,6 +1,5 @@
 // import React, { useEffect, useState } from 'react'
 import { Row, Col } from 'react-bootstrap'
-// import axios from 'axios'
 import Product from '../components/Product'
 import Loader from '../components/Loader';
 import Message from '../components/Message';
@@ -10,19 +9,6 @@ import { Fragment } from 'react';
 
 const HomeScreen = () => {
   const { data: product, isLoading, error } = useGetProductsQuery();
-  // console.log(data.products)
-
-  // const [products, setProducts] = useState([])
-
-  // useEffect(() => {
-  //   const fetchProducts = async () => {
-  //     const { data } = await axios.get('/api/products')
-  //     setProducts(data)
-  //   }
-  //   fetchProducts()
-  // }, [])
-
-  // console.log(products)
 
 
   return (

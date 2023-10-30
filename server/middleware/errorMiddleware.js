@@ -1,6 +1,6 @@
 
 // Custom express error handling, fallback if error is not caught by other middleware
-export const notFound = (req, res, next) => {
+const notFound = (req, res, next) => {
     // Get the originalUrl from the request object
     const error = new Error(`Not Found - ${req.originalUrl}`);
     res.status(400)
@@ -9,8 +9,7 @@ export const notFound = (req, res, next) => {
 }
 
 
-//Override default express error handler with
-export const errorHandler = (req, res, next) => {
+const errorHandler = (req, res, next) => {
     let statusCode = res.statusCode === 200 ? 500 : res.statusCode;
     let message = err.message
 
@@ -21,8 +20,10 @@ export const errorHandler = (req, res, next) => {
     }
 
     res.status(statusCode).json({
-        message,
+        message: message,
         stack: process.env.NODE_ENV === 'production' ? '🥞' : err.stack
     })
 }
+
+export { notFound, errorHandler };
 

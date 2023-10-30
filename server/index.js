@@ -1,4 +1,3 @@
-
 import express from 'express';
 import dotenv from 'dotenv';
 dotenv.config()
@@ -11,6 +10,10 @@ connectDB() //connect to mongoDB
 const PORT = process.env.PORT || 8000
 const app = express();
 
+// Body parser middleware
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+
 
 app.get('/', (req, res) => {
     res.send('Api is running...')
@@ -19,7 +22,7 @@ app.get('/', (req, res) => {
 app.use('/api/products', productRoutes)
 app.use('/api/users', userRoutes)
 
-//Use error handler middleware
+// error handler middleware
 app.use(notFound)
 app.use(errorHandler)
 

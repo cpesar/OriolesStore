@@ -175,6 +175,17 @@ const productsData = [
     countInStock: 100,
     rating: -0.5,
     numReviews: 200
+  },
+  {
+    name: "Jay Gibbons",
+    image: '../src/assets/images/jaygib2.png',
+    description: 'Sidney Ponson baseball card',
+    brand: 'Barbank Sportscards',
+    category: 'Baseball Cards',
+    price: 0.99,
+    countInStock: 100,
+    rating: -0.5,
+    numReviews: 200
   }
 
 ]

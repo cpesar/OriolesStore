@@ -1,4 +1,4 @@
-// import mongoose from "mongoose";
+import mongoose from "mongoose";
 import dotenv from "dotenv";
 import colors from "colors";
 import users from '../server/data/users.js'
@@ -42,10 +42,10 @@ export const destroyData = async () => {
         await Product.deleteMany();
         await User.deleteMany();
 
-        console.log('Data destroyed', colors.red.inverse)
+        console.log('Data destroyed'.red.inverse)
         process.exit()
     } catch (error) {
-        console.error(`${error}`, colors.red.inverse)
+        console.error(`${error}`.red.inverse)
         process.exit(1)
     }
 }

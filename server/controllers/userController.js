@@ -13,8 +13,6 @@ const loginUser = asyncHandler(async (req, res) => {
     // console.log(req.body)
 
     if (user && (await user.matchPassword(password))) {
-        // console.log(matchPassword)
-
 
         const token = jwt.sign({ userId: user._id }, `${process.env.JWT_SECRET}`, {         // The secret must use ES6 String Literals
             expiresIn: '30d'
@@ -31,7 +29,6 @@ const loginUser = asyncHandler(async (req, res) => {
             _id: user._id,
             name: user.name,
             email: user.email,
-            // password: user.password,
             isAdmin: user.isAdmin,
         })
     } else {
